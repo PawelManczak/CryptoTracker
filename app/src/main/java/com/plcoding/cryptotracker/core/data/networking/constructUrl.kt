@@ -1,4 +1,4 @@
-package com.plcoding.core.data.networking
+package com.plcoding.cryptotracker.core.data.networking
 
 import com.plcoding.cryptotracker.BuildConfig
 

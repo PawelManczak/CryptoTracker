@@ -1,7 +1,7 @@
-package com.plcoding.core.data.networking
+package com.plcoding.cryptotracker.core.data.networking
 
-import com.plcoding.core.domain.util.NetworkError
-import com.plcoding.core.domain.util.Result
+import com.plcoding.cryptotracker.core.domain.util.NetworkError
+import com.plcoding.cryptotracker.core.domain.util.Result
 import io.ktor.client.call.NoTransformationFoundException
 import io.ktor.client.call.body
 import io.ktor.client.statement.HttpResponse

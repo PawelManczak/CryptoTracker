@@ -1,4 +1,4 @@
-package com.plcoding.core.presentation.util
+package com.plcoding.cryptotracker.core.presentation.util
 
 import com.plcoding.cryptotracker.R
 
