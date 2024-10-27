@@ -49,12 +49,10 @@ fun CoinListScreen(
 fun CoinListScreenPreview() {
     CryptoTrackerTheme {
         CoinListScreen(
-            state = CoinListState(
-                coins = (1..100).map {
-                    previewCoin.copy(id = it.toString())
-                }
-            ),
-            modifier = Modifier.background(MaterialTheme.colorScheme.background)
+            state = CoinListState(coins = (1..100).map {
+                previewCoin.copy(id = it.toString())
+            }),
+            modifier = Modifier.background(MaterialTheme.colorScheme.background),
         )
     }
 }
