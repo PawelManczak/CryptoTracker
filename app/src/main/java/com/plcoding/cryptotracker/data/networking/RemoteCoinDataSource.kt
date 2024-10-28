@@ -5,10 +5,16 @@ import com.plcoding.cryptotracker.core.domain.util.NetworkError
 import com.plcoding.cryptotracker.core.domain.util.Result
 import com.plcoding.cryptotracker.core.domain.util.map
 import com.plcoding.cryptotracker.crypto.domain.Coin
+import com.plcoding.cryptotracker.crypto.domain.CoinPrice
 import com.plcoding.cryptotracker.data.mappers.toCoin
+import com.plcoding.cryptotracker.data.mappers.toCoinPrice
+import com.plcoding.cryptotracker.data.networking.dto.CoinHistoryDto
 import com.plcoding.cryptotracker.data.networking.dto.CoinsResponseDto
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
+import io.ktor.client.request.parameter
+import java.time.ZoneId
+import java.time.ZonedDateTime
 
 class RemoteCoinDataSource(
     private val httpClient: HttpClient
@@ -21,6 +27,25 @@ class RemoteCoinDataSource(
             )
         }.map { response ->
             response.data.map { it.toCoin() }
+        }
+    }
+
+    override suspend fun getCoinHistory(
+        coinId: String, start: ZonedDateTime, end: ZonedDateTime
+    ): Result<List<CoinPrice>, NetworkError> {
+        return safeCall<CoinHistoryDto> {
+            val startMillis = start.withZoneSameInstant(ZoneId.of("UTC")).toInstant().toEpochMilli()
+            val endMillis = end.withZoneSameInstant(ZoneId.of("UTC")).toInstant().toEpochMilli()
+
+            httpClient.get(
+                urlString = constructUrl("/assets/$coinId/history"),
+            ) {
+                parameter("interval", "h6")
+                parameter("start", startMillis)
+                parameter("end", endMillis)
+            }
+        }.map {
+            it.data.map { it.toCoinPrice() }
         }
     }
 }
