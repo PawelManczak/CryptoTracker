@@ -30,10 +30,11 @@ class CoinListViewModel(
     fun onAction(action: CoinListAction) {
         when (action) {
             is CoinListAction.OnCoinClicked -> {
-
+                _state.update { it.copy(selectedCoin = action.coinUi) }
             }
         }
     }
+
     private fun loadCoins() {
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true) }
