@@ -2,7 +2,7 @@
 
 App for tracking crypto market prices based on Philipp Lackner "The Best Practice Guide to Android Architecture" course, using Ktor, Koin, Dynamic Coloring, Adaptive Navigation, Canvas selfmade linechart.
 
+![image](https://github.com/user-attachments/assets/a52e2cc3-5953-4bef-ae29-8bd2409ca8e1)
 
-![image](https://github.com/user-attachments/assets/399f63c9-dfd8-4679-a567-ebc88fcdd473)
+![image](https://github.com/user-attachments/assets/e3c4b39c-1e24-451f-9299-1ad30a3f1eba)
 
-![image](https://github.com/user-attachments/assets/26e88a95-2ca0-4cfa-b408-401d8a3b71db)
