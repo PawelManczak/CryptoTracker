@@ -86,7 +86,7 @@ fun LineChart(
         .pointerInput(drawPoints, xLabelWidth) {
             detectHorizontalDragGestures { change, _ ->
                 val newSelectedDataPointIndex = getSelectedDataPointIndex(
-                    dataPoints = visibleDataPoints,
+                    dataPoints = drawPoints,
                     touchOffsetX = change.position.x,
                     triggerWidth = xLabelWidth
                 )
@@ -144,13 +144,6 @@ fun LineChart(
         val viewPortRightX = size.width
         val viewPortBottomY = viewPortTopY + viewPortHeightPx
         val viewPortLeftX = 2f * horizontalPaddingPx + maxYLabelYWidth
-
-        val viewPort = Rect(
-            left = viewPortLeftX,
-            top = viewPortTopY,
-            right = viewPortRightX,
-            bottom = viewPortBottomY
-        )
 
 
         xLabelWidth = maxXLabelWidth + xAxisLabelSpacingPx

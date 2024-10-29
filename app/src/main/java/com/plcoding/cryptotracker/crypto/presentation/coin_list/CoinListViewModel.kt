@@ -55,7 +55,7 @@ class CoinListViewModel(
                             xLabel=DateTimeFormatter.ofPattern("ha\nM/d").format(it.dateTime)
                         )
                     }
-                _state.update { it.copy(selectedCoin = coinUi.copy(coinPrice = dataPoints)) }
+                _state.update { it.copy(selectedCoin = coinUi.copy(coinPriceHistory = dataPoints)) }
             }.onError {
                 _events.send(CoinListEvent.Error(it))
             }
